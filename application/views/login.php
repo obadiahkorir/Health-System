@@ -1,0 +1,244 @@
+<!DOCTYPE>
+<html>
+
+    <head>
+<link rel="stylesheet" href="css/bootstrap.css"/>
+        <script src="js/jquery_library.js"></script>
+<script src="js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+		<?php include 'includes.php';?>
+
+        <title>PWANI UNIVERSITY E-HEALTH</title>
+
+    </head>
+
+	<body>
+
+		<?php if($this->session->flashdata('flash_message') != ""):?>
+
+ 		<script>
+
+			$(document).ready(function() {
+
+				Growl.info({title:"<?php echo $this->session->flashdata('flash_message');?>",text:" "})
+
+			});
+
+		</script>
+
+        <?php endif;?>
+
+        <div class="navbar navbar-top navbar-inverse">
+
+            <div class="navbar-inner">
+
+                <div class="container-fluid">
+<img src="<?php echo base_url();?>uploads/logo.jpg"  style="height:50px; width:400px;"/>
+                    <a class="brand" href="<?php echo base_url();?>"><?php echo $system_name;?></a>
+
+                   <center> <h1>PWANI E-HEALTH MANAGEMENT SYSTEM.</h1></center>
+<center><h4>YOUR HEALTH IS OUR CONCERN</h4></center>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+</div>
+<!-- slider end-->
+</div>
+        <div class="container">
+
+            <div class="span4 offset4">
+
+                <div class="padded">
+
+                    <center>
+
+                       <h4>PWANI E-HEALTH MANAGEMENT SYSTEM.</h4>
+
+                    </center>
+
+                    <div class="login box" style="margin-top: 30px;">
+
+                        <div class="box-header">
+
+                            <span class="title"><?php echo get_phrase('OUR USER LOGIN FORM');?></span>
+
+                        </div>
+
+                        <div class="box-content padded">
+
+                        <i class="m-icon-swapright m-icon-white"></i>
+
+                        	<?php echo form_open('login' , array('class' => 'separate-sections'));?>
+
+                                <div class="">
+
+                                    
+
+                                    <select class="validate[required]" name="login_type" style="width:100%;">
+
+                                        <option value=""><?php echo get_phrase('account_type');?></option>
+
+                                        <option value="admin"><?php echo get_phrase('admin');?></option>
+
+                                        <option value="doctor"><?php echo get_phrase('doctor');?></option>
+
+                                        <option value="patient"><?php echo get_phrase('patient');?></option>
+
+                                        <option value="nurse"><?php echo get_phrase('nurse');?></option>
+
+                                        <option value="pharmacist"><?php echo get_phrase('pharmacist');?></option>
+
+                                        <option value="laboratorist"><?php echo get_phrase('laboratorist');?></option>
+
+                                        <option value="accountant"><?php echo get_phrase('accountant');?></option>
+
+                                    </select>
+
+    
+
+                                </div>
+
+                                <div class="input-prepend">
+
+                                    <span class="add-on" href="#">
+
+                                    <i class="icon-envelope"></i>
+
+                                    </span>
+
+                                    <input name="email" type="text" placeholder="<?php echo get_phrase('email');?>">
+
+                                </div>
+
+                                <div class="input-prepend">
+
+                                    <span class="add-on" href="#">
+
+                                    <i class="icon-key"></i>
+
+                                    </span>
+
+                                    <input name="password" type="password" placeholder="<?php echo get_phrase('password');?>">
+
+                                </div>
+
+                                <div>
+
+                                    <button type="submit" class="btn btn-blue btn-block" >
+
+                                        <?php echo get_phrase('Login');?>
+                                       
+                                    </button>
+
+                                </div>
+
+                            <?php echo form_close();?>
+
+                            <div>
+
+                                <a  data-toggle="modal" href="reset_password">
+
+                                    <?php echo get_phrase('Forgot_password?');?>
+
+                                </a>
+
+                            </div>
+                            <center>
+                            <div>
+
+                                <a  data-toggle="modal" href="#">
+
+                                    <?php echo get_phrase('Register');?>
+
+                                </a>
+
+                            </div>
+</center>
+                        </div>
+
+                    </div>
+
+                    <?php include 'application/views/footer.php';?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        
+
+        <!-----------password reset form ------>
+
+        <div id="modal-simple" class="modal hide fade">
+
+          <div class="modal-header">
+
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            <h6 id="modal-tablesLabel"><?php echo get_phrase('reset_password');?></h6>
+
+          </div>
+
+          <div class="modal-body">
+
+            <?php echo form_open('login/reset_password');?>
+
+            	<select class="validate[required]" name="account_type"  style="margin-bottom: 0px !important;">
+
+                    <option value=""><?php echo get_phrase('account_type');?></option>
+
+                    <option value="admin"><?php echo get_phrase('admin');?></option>
+
+                    <option value="doctor"><?php echo get_phrase('doctor');?></option>
+
+                    <option value="patient"><?php echo get_phrase('patient');?></option>
+
+                    <option value="nurse"><?php echo get_phrase('nurse');?></option>
+
+                    <option value="pharmacist"><?php echo get_phrase('pharmacist');?></option>
+
+                    <option value="laboratorist"><?php echo get_phrase('laboratorist');?></option>
+
+                    <option value="accountant"><?php echo get_phrase('accountant');?></option>
+
+                </select>
+
+                <input type="email" name="email"  placeholder="<?php echo get_phrase('email');?>"  style="margin-bottom: 0px !important;"/>
+
+                <input type="submit" value="<?php echo get_phrase('reset');?>"  class="btn btn-blue btn-medium"/>
+
+            <?php echo form_close();?>
+
+          </div>
+
+          <div class="modal-footer">
+
+            <button class="btn btn-default" data-dismiss="modal">Close</button>
+
+          </div>
+
+        </div>
+
+        <!-----------password reset form ------>
+
+        
+
+        
+
+	</body>
+
+</html>
